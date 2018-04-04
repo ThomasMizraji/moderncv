@@ -35,12 +35,16 @@
 \renewcommand*{\titlefont}{\LARGE\mdseries\slshape}
 \renewcommand*{\addressfont}{\small\mdseries\slshape}
 \renewcommand*{\quotefont}{\large\slshape}
+\renewcommand*{\birthdatefont}{\small\mdseries\slshape}
+\renewcommand*{\nationalityfont}{\small\mdseries\slshape}
 
 % styles
 \renewcommand*{\namestyle}[1]{{\namefont\textcolor{color0}{#1}}}
 \renewcommand*{\titlestyle}[1]{{\titlefont\textcolor{color2}{#1}}}
 \renewcommand*{\addressstyle}[1]{{\addressfont\textcolor{color2}{#1}}}
 \renewcommand*{\quotestyle}[1]{{\quotefont\textcolor{color1}{#1}}}
+\renewcommand*{\birthdatestyle}[1]{{\birthdatefont\textcolor{color2}{#1}}}
+\renewcommand*{\nationalitystyle}[1]{{\nationalityfont\textcolor{color2}{#1}}}
 
 
 %-------------------------------------------------------------------------------
@@ -92,6 +96,10 @@
       \setlength{\makecvheadpictureboxskip}{\totalheightof{\usebox{\makecvheadpicturebox}}}%
       \namestyle{\@firstname\ \@lastname}%
       \ifthenelse{\equal{\@title}{}}{}{\\[1.25em]\titlestyle{\@title}}\\[2.5em]%
+            \ifthenelse{\equal{\@title}{}}{}{\\[1.25em]\titlestyle{\@title}}\\[.15em]\null\hfill%
+        \ifthenelse{\isundefined{\@birthdate}}{}{\birthdatestyle\@birthdate}%
+        \enskip-\enskip
+        \ifthenelse{\isundefined{\@nationality}}{}{\nationalitystyle\@nationality}%
       % optional quote
       \ifthenelse{\isundefined{\@quote}}%
         {}%

@@ -244,6 +244,7 @@
 % usage: \homepage{<url>}
 \newcommand*{\homepage}[1]{\def\@homepage{#1}}
 
+
 % adds a fixed/mobile/fax number to one's personal information (optional)
 % usage: \phone[<optional type>]{<number>}
 % where <optional type> should be either "fixed" (default), "mobile" or "fax
@@ -274,6 +275,10 @@
 % defines additional personal information (optional)
 % usage: \extrainfo{<text>}
 \newcommand*{\extrainfo}[1]{\def\@extrainfo{#1}}
+
+\newcommand*{\birthdate}[1]{\def\@birthdate{#1}}
+\newcommand*{\nationality}[1]{\def\@nationality{#1}}
+\newcommand*{\drivinglicence}[1]{\def\@drivinglicence{#1}}
 
 % colors
 %-------

@@ -45,12 +45,16 @@
 \renewcommand*{\titlefont}{\LARGE\mdseries\slshape}
 \renewcommand*{\addressfont}{\normalsize\mdseries\slshape}
 \renewcommand*{\quotefont}{\large\slshape}
+\newcommand*{\birthdatefont}{\small\mdseries\slshape}
+\newcommand*{\nationalityfont}{\small\mdseries\slshape}
 
 % styles
 \renewcommand*{\namestyle}[1]{{\namefont\textcolor{color0}{#1}}}
 \renewcommand*{\titlestyle}[1]{{\titlefont\textcolor{color2}{#1}}}
 \renewcommand*{\addressstyle}[1]{{\addressfont\textcolor{color2}{#1}}}
 \renewcommand*{\quotestyle}[1]{{\quotefont\textcolor{color1}{#1}}}
+\newcommand*{\birthdatestyle}[1]{{\birthdatefont\textcolor{color2}{#1}}}
+\newcommand*{\nationalitystyle}[1]{{\nationalityfont\textcolor{color2}{#1}}}
 
 % commands
 \@initializecommand{\makeheaddetailssymbol}{%
@@ -150,13 +154,17 @@
     \flushmakeheaddetails}\fi% need to force a \par after this to avoid weird spacing bug at the first section if no blank line is left after \makehead
   % optional title
   \ifthenelse{\equal{\@title}{}}{}{%
-    \\[1.25em]\null% \null is required as there is no box on the line after \\, so glue such as \hfill (and leaders) disappear; this is in contrast to after \par, where the next line starts with an indent box (even after \noindent)
-    \if@right\hfill\fi%
+    \\[1.25em]\if@right\hfill\fi%
     \if@alternate%
       \titlestyle{\MakeLowercase\@title}%
     \else%
       \titlestyle{\@title}\fi%
-    }\\[2.5em]%
+    }\\[.15em]\null\hfill%
+        \ifthenelse{\isundefined{\@birthdate}}{}{\birthdatestyle\@birthdate}%
+        \enskip-\enskip
+        \ifthenelse{\isundefined{\@nationality}}{}{\nationalitystyle\@nationality}\\\null\hfill%
+        \ifthenelse{\isundefined{\@drivinglicence}}{}{\nationalitystyle\@drivinglicence}\\\null\hfill%    
+
   % optional quote
   \ifthenelse{\isundefined{\@quote}}%
     {}%
